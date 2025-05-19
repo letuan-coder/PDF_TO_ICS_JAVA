@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+        .login-btn { padding: 8px 16px; background-color: #007bff; color: white; border: none; cursor: pointer; }
+        .login-btn:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+<h1>Đăng nhập</h1>
+
+<!-- Hiển thị thông báo đăng xuất thành công -->
+<div th:if="${param.logout}" class="success">
+    <p>Đăng xuất thành công!</p>
+</div>
+
+<!-- Hiển thị thông báo lỗi nếu đăng nhập thất bại -->
+<div th:if="${param.error}" class="error">
+    <p>Đăng nhập thất bại. Vui lòng thử lại.</p>
+</div>
+
+<!-- Liên kết đăng nhập Google -->
+<a th:href="@{/oauth2/authorization/google}" class="login-btn">Đăng nhập bằng Google</a>
+
+</body>
+</html>

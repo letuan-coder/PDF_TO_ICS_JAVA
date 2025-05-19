@@ -1,0 +1,156 @@
+Danh Sách Thành Viên 						Nhóm: 03
+STT	Họ và Tên 	Mã Số Sinh Viên	Vai trò
+1	Lê Tuấn	Dh52000682	PM,BA
+2	Lê Trung Hiếu	DH52106328	Devops,Tester
+3	Trần Gia Khiêm	DH52111127	Devlead
+4	Trần Minh Tú	DH52107408	UX/UI,Dev1
+5	Huỳnh Nguyễn Minh Tuấn	DH52112001	Dev2
+6	Hoàng Văn Đức	Dh52100015	Test_Lead
+
+Đề Tài :chuyển từ PDF sang ICS
+Các giai đoạn
+1 tuần cho giai đoạn 1 
+4 tuần cho giai đoạn 2 
+2 tuần cho giai đoạn 3
+
+Convention và Quy Tắc Của Team
+Các Branches
+•  main → Nhánh chính, chứa code ổn định.
+•  devlop → Nhánh phát triển chính, nơi các tính năng mới được merge vào trước khi đưa lên main.
+•  feature → Nhánh phát triển tính năng, xuất phát từ dev.
+•  bugfix → Nhánh sửa lỗi, xuất phát từ dev.
+•  hotfix → Nhánh sửa lỗi khẩn cấp, xuất phát từ main (thường dùng để vá lỗi production).
+1.Quy tắc code
+ Quy tắc chung : 
++ Tất cả hàm và biến phải theo CamelCase ( trừ các biến đặt biệt global và Hằng số)
++ Các biến và hàm phải đặt theo Tiếng Anh
++ Không sử dụng dấu cách khoảng trắng và “-” trong bất kỳ trường hợp nào đặt biến hoặc hàm chỉ sử dụng dấu “_”  
++ Tất cả các hàm và các biến phải rõ ràng từ tên đến lý do được sinh ra nhằm để đơn giản cho việc merge code của dev_lead
++ Xử lý các cảnh báo (warning)_không nhất thiết toàn bộ warning 
+1.2 Quy tắc đặt tên biến :
++ Xóa các biến nếu không sử dụng (trường hợp các bạn sử dụng để test hàm hay chương trình )
+ + Các biến được tạo ra phải có giá trị ban đầu (nhằm tránh 	các trường hợp NullException)
+vd:  
++ Các biến không được có tên quá dài
+
++ Các biến từ trả về 1 danh sách phải có quy tắc tên như 	sau: ListOf_<tên của object>  
+Vd: List<Product> ListOf_Products;
++ Các biến có thời gian : created_At,updated_At,startTime, endTime
++ Các biến của Object cũng phải đặt LOWERCASE của 	biến Object
+Vd: Product product = new Product;
++ Các biến toàn cục (global) phải có g_ ở đầu 
+Vd: g_VariableName
++ Các còn với các hằng số phải sử dụng UPPERCASE
+Vd: const int MAX=100;
++ Tên biến đặt phải có ý nghĩa nhằm mô tả mục đích của 	biến được sinh ra 
+1.3 Quy tắc đặt tên hàm :
+ + Tên Hàm phải cũng phải ý nghĩa mô tả rõ mục đích của hàm 
+    // hàm thêm File 
+Vd: Insert_File(){}
+ +  Không viết tắt các tên hàm			
+ + Các hàm getter và setter phải đi chung với thuộc tính (tùy TH)
+Vd: +get_name();
+       +set_name()
+1.4 Quy tắc thư viện
++ Các thư viện không sử dụng phải xóa 
+1.5 Quy tắc đặt tên Folder or Package
++ Đặt tên Folder hoặc Package phải được đặt tên dựa theo tập 	dữ liệu mà nó lưu trữ 	
++ Đặt tên Folder hoặc Package phải được đặt tên theo số nhiều 
+Vd: Folder lưu trữ các Model của chương trình phải phải được viết là Models
+1.6 Quy tắc comment
+  + Không comment bừa bãi comment trên mỗi function
+  + Comment phải mang ý nghĩa note ý chính giải thích 
+  + Mỗi khi update hàm phải update luôn cả comment 
+1.7 Quy tắc kiểm soát (exception)
++ Luôn phải có xử lý exception
++ Nếu là các exception khác nhau phải có các ClassException khác nhau (nhằm dễ nhận biết lỗi trongquá trình test)
+vd : Nếu có 2 exception 
+1. Không nhận tìm được dữ liệu 
+2. Không đúng với Validation 
+Thì phải có 2 ClassException là :
++ DataNotFoundExecption
++ InvalidException
+2. Quy tắc Git và bitbucket
+2.1 Đặt tên commit 	
++ các commit phải được đặt tên theo quy tắc sau 
+feat: Thêm chức năng đăng nhập
+fix: Sửa lỗi không thể gửi email xác nhận
+refactor: Cải thiện hiệu suất xử lý ảnh
+docs: Cập nhật README về cách cài đặt
+2.2 Message commit 
++ Các message commit phải rõ ràng và ngắn gọn các 	chức năng đã thay đổi 
+Vd : 
+feat(payment): Thêm phương thức thanh toán PayPal
+- Tích hợp PayPal API vào hệ thống thanh toán
+- Xử lý lỗi khi giao dịch thất bại
+- Thêm unit test cho phương thức mới
+2.3 Quy tắc Push
++ Không push code lỗi hay code chưa được test kỹ 
+2.4 Quy tắc brach 
++ Dùng tên branch có quy tắc, không đặt tùy tiện
+Vd: 
+feature/authentication
+bugfix/payment-error
+refactor/improve-performance
+docs/update-readme
++ Tuyệt đối không commit trực tiếp trên nhánh main 
+2.4 Quy tắc commit thường xuyên và có ý nghĩa 
++ Không commit quá ít (commit quá lớn và khó review)
+ + Không commit từng dòng code nhỏ lẻ (cho dev_lead và PM dễ theo dõi )
++ Chia commit theo tính năng/lỗi cụ thể (Nhằm để 	tester dễ test)
+3. Quy tắc cho team 
+3.1 Quy tắc giao tiếp 
++ Luôn cập nhật tiến độ công việc trên kênh chung Zalo
++ Báo sớm cho PM hoặc Dev_Lead nếu gặp vấn đề hoặc không thể hoàn thành task đúng hạn
+3.2 Quy tắc Test
++ Các tính năng phải được test có ít nhất 1 test đơn vị (unit test)
++ Các test plan phải rõ ràng và test case phải có đầy đủ các thông tin như Input,Output 
++ Không được push code lỗi hay chưa kiểm tra kỹ 
+Repository chung 
+3.3 Quy tắc xử lý vi phạm 
++ Dựa vào tiến độ và độ hiệu quả của các dev PM sẽ họp với Dev_Lead 
+- Lần 1: nhắc nhở 	
+-Lần 2: Xóa thành viên khỏi nhóm (tùy mức độ)
+
+Lưu ý:
+1.	Dealine  
+-	Tùy vào độ phức tạp của chức năng dealine sẽ khác nhau  
+-	Commit trong dự án để tôi với Lê Trung Hiếu có thể xem được tiến độ của dự án  
+2.	Devops  và scrum master ( Lê Trung Hiếu ) 
+-	1 Tuần gặp 1 lần ( Tối thứ 7 hàng tuần tầm 18:00 or CN ) để tui đánh giá tiến độ và hiệu quả của công việc với Hoàng Văn Đức có thể đưa ra test và test case (tùy chức năng : +Test đơn vị hay Test tổ hợp ) 
+-	Ông Hiếu phải ghi lại toàn bộ cuộc họp để có thể viết báo cáo  
++ Mục đích của cuộc họp  
++ Tiêu chí của cuộc họp  
++ Tiến độ của dự án và các dev 
+3.	Ngôn Ngữ của source thầy cho là C# desktop  
+4.	Ngôn ngữ chính : Python or Java  
+5.	Push file Ics vào mini app (có hoặc không đều ok ) 
+6.	Nội quy : 
+-	1 tuần commit ít nhất cho tôi 1 lần  
+-	Message commit chức năng đã thêm hoặc đã sửa để tui với ông Hiếu có thể theo dõi và ông Đức có thể biết và đưa ra test  
+-	Tùy tiến độ theo tôi và ông Hiếu đánh giá sẽ đưa ra quyết định  
+( Dựa theo tiến độ và commit ) 
+ Kế hoạch team
++ mô hình scrum 
++ thiếu vai trò Devop (triển khai mô hình , mô hình test )
+giai đoạn 1 > chuẩn bị ây dụng team và tìm hiểu dự án và công nghệ ( 2 tuần )
+meeting offline đối với tất cả mọi thành viên sẽ trình bày (1 tuần )
+giai đoạn 2 > khảo sát : + xác định yêu cầu chức năng và phi chức năng của ứng dụng (4 tuần)
+                        Thiết Kế : Thành Phần dữ liệu 
+                                          Thiết kế thành phần giao diện 
+                         Cài đặt( code )và kiểm thử (Unit test ): code theo thiết kế  đã làm ở bước trước 
+                          Kiểm thử  :test plan 
+                                             test case =>test
+vận hành : dựa trên hệ thống cái 
+dự trữ (1 tuần )
+viết báo cáo (1 tuần )
+Các công việc cần làm 
++ Phân chia lại vai trò (Thiếu vị trí devops
+- Tìm hiểu để triển khai công nghệ trên git trên công cụ bitbucket
+- Triển khai git-bitbucket cho quy trình công nghệ PM scrum 
+- Devops+PM sẽ soạn ra conversion và nội quy của team
+- dev1 _dev2...dev n )
++ PM tìm hiểu quy trình Scrum để triển khai quản lý team+ công việc 
++ PM tiến hành giao việc tìm hiểu về dự án và công nghệ sẽ sử dụng trong dự án 
+hạn chót chiều thứ 5 tuần sau (27/03/2025)
+

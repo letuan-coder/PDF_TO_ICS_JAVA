@@ -1,0 +1,395 @@
+﻿<html>
+<head>
+    <meta name="keywords" content="Vietnamese, Vietnam, Viet, Unicode, UTF-8, VietPad, Text Editor, Java, cross-platform, Conversion, Font, HTML" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>VietPad Trợ giúp</title>
+    <style type="text/css">
+        td
+        {
+            font-family: Verdana,Arial;
+            font-size: 10pt;
+        }
+        td.head
+        {
+            font-family: Verdana, Arial;
+            font-size: 10pt;
+            font-weight: bold;
+            background-color: #005050;
+            color: #FFFFFF;
+        }
+        body
+        {
+            font-family: "Times New Roman", Verdana, Arial;
+        }
+        .style1
+        {
+            font-size: small;
+        }
+    </style>
+</head>
+<body>
+    <!-- HTML 3.2 for Mac OS X Help Viewer -->
+    <h2 align="center">
+        VietPad</h2>
+    <p align="center">
+        <span class="style1"><a href="readme.html">English</a> | Vietnamese</span></p>
+    <h4>
+        MÔ TẢ</h4>
+    <p>
+        VietPad là một chương trình text editor Việt Unicode đầy đủ tính năng có thể chạy
+        trên các máy computer có gắn Java Runtime Environment, như các máy có hệ điều hành
+        Windows, Linux/Unix, Mac OS X, hay Solaris.</p>
+    <p>
+        Người sử dụng có thể đánh chữ Việt tương thích với tiêu chuẩn <a href="http://vietunicode.sourceforge.net">
+            Unicode</a> dùng những cách đánh phổ thông như lối Telex, VNI, hay VIQR/Vietnet.
+        VietPad hỗ trợ file và text Drag-and-Drop và khả năng bỏ dấu thông minh. VietPad
+        có thể mở/cất file trong dạng Windows Latin 1, tức dạng có phím chữ trên bàn phím
+        thông thường, và Unicode, tức là dạng tiêu chuẩn quốc tế thống nhất bao gồm chữ
+        Việt, qua sự chọn lựa loại file trong File Dialog. Một tiện ích giúp chuyển dạng
+        sang Unicode từ Numeric Character References (NCR), UTF-8, và các encoding cũ khác
+        cũng được tích hợp trong VietPad. Khả năng xếp thứ tự chữ Việt, tước dấu, nối dòng,
+        và đổi ngữ cách cũng được hỗ trợ.</p>
+    <p>
+        Khả năng điền dấu cho đoạn văn chữ Việt không dấu cũng được tích hợp. Đặt điểm này
+        sử dụng một danh sách, được để trong <code>.vietpad</code> directory dưới user&#39;s
+        home directory, chứa các từ ngữ Việt thường dùng mà người sử dụng có thể thêm thắt
+        được. Khả năng duyệt chính tả và bình thường hóa dấu cũng được bao gồm trong các <a
+            href="http://vietpad.sourceforge.net/apply.html">tính năng</a> của VietPad.</p>
+    <p>
+        File cất trong dạng Unicode có thể mở được trong Notepad của Windows NT/2000/XP/7
+        và có thể copy/paste qua lại các ứng dụng khác tương thích với Unicode. Dùng Font
+        Preview function, người dùng có thể chọn loại font có đầy đủ chữ Việt Unicode. Tính
+        năng Tìm kiếm/Thay thế đã bao gồm hỗ trợ cho Biểu thức chính quy (Regular Expression).</p>
+    <p>
+        VietPad được công bố và phân phối dưới <a href="http://www.gnu.org/copyleft/gpl.html">
+            GNU General Public License</a>. Gia trang chính thức ở tại <a href="http://vietpad.sourceforge.net/">
+                http://vietpad.sourceforge.net</a>.</p>
+    <h4>
+        ĐÒI HỎI HỆ THỐNG</h4>
+    <p>
+        Bạn sẽ cần có Java Runtime Environment, Standard Edition (JRE) 8 hoặc mới hơn gắn
+        trong máy của bạn. JRE có thể được hạ tải miễn phí từ <a href="https://www.oracle.com/java/technologies/javase-downloads.html">
+            https://www.oracle.com/java/technologies/javase-downloads.html</a>. Bộ JRE gồm có Java virtual machine,
+        các Java platform classes cốt lõi, và các files hỗ trợ để giúp chạy các chương trình
+        viết với ngôn ngữ lập trình Java.</p>
+    <h4>
+        CÁCH CHẠY CHƯƠNG TRÌNH VietPad</h4>
+    <p>
+        VietPad được biên trong ngôn ngữ Java và đóng gói như executable Java-Archive program.
+        Download và unzip <code>VietPad-2.5.zip</code>. Chạy ứng dụng VietPad bằng cách double-clicking
+        trên file <code>VietPad.jar</code> hay chạy command trên command line như sau:</p>
+    <blockquote>
+        <p>
+            <code>java -jar VietPad.jar</code></p>
+    </blockquote>
+    <p>
+        hay (trong Windows)</p>
+    <blockquote>
+        <p>
+            <code>javaw -jar VietPad.jar</code></p>
+    </blockquote>
+    <p>
+        <u><b>Lưu ý</b></u>: Tên của file case-sensitive trong một số hệ điều hành OS. Hãy
+        chắc rằng current directory chứa file <code>VietPad.jar</code>.</p>
+    <p>
+        Để chạy phiên bản bản địa hóa Việt Nam, sử dụng switch sau đây cho Java interpreter:</p>
+    <blockquote>
+        <p>
+            <code>java -Duser.language=vi -jar VietPad.jar</code></p>
+    </blockquote>
+    <p>
+        Switch này không cần nếu system&#39;s default locale đã là Việt Nam. Trong khâu
+        International của <a href="http://en.wikipedia.org/wiki/System_Preferences">
+            System Preferences</a> trên Mac OS X, &quot;Việt&quot; có thể kéo tới đầu bảng
+        Languages. Trên Windows, bản địa Việt Nam có thể mặc định qua Regional Options trong
+        Control Panel hoặc qua chọn Giao Diện Tiếng Việt trong hộp Tùy Thích của VietPad.</p>
+    <p>
+        File có chữ Việt Unicode phải được cất trong dạng Unicode. Custom settings, như
+        Font and Input Method options, sẽ được cất giữ khi chương trình chấm dứt. Luôn Lưu
+        với Platform Default option, khi chọn, buộc dùng platform default line endings khi
+        cất file; khi không chọn, bảo tồn line endings nguyên thủy. Tùy chọn này tính cho
+        sự khác biệt của tự cuối dòng End-of-Line (EOL), cụ thể là CRLF and LF, giữa các
+        hệ điều hành Windows và Linux/Unix.</p>
+    <p>
+        <u><b>Lưu ý</b></u>: Nhớ tắt những chương trình Vietnamese keyboard drivers khác—như
+        là VPSKeys, WinVNKey, VNI, VietKey, hay UniKey—khi bạn dùng VietPad.</p>
+    <h4>
+        <font color="#000000">NHỮNG CÁCH GÕ CHỮ VIỆT THÔNG DỤNG</font></h4>
+    <center>
+        <table cellspacing="1" cellpadding="2" width="600" align="center" border="0">
+            <tr>
+                <td class="head" align="center" style="background-color: #006600" height="50">
+                    Accents vs. Vowels<br />
+                    Dấu với nguyên âm
+                </td>
+                <td class="head" align="center" style="background-color: #006600" height="50">
+                    Telex Input Method<br />
+                    Cách gõ Telex
+                </td>
+                <td class="head" align="center" style="background-color: #006600" height="50">
+                    VNI Input Method<br />
+                    Cách gõ VNI
+                </td>
+                <td class="head" align="center" style="background-color: #006600" height="50">
+                    VIQR Input Method<br />
+                    Cách gõ VIQR
+                </td>
+            </tr>
+            <tr bgcolor="#f0f0f0">
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    a circumflex - â
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    aa
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    a6
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    a^
+                </td>
+            </tr>
+            <tr bgcolor="#f0f0f0">
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    e circumflex - ê
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    ee
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    e6
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    e^
+                </td>
+            </tr>
+            <tr bgcolor="#f0f0f0">
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    o circumflex&nbsp; - ô
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    oo
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    o6
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    o^
+                </td>
+            </tr>
+            <tr bgcolor="#f0f0f0">
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    a breve - ă
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    aw
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    a8
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    a(
+                </td>
+            </tr>
+            <tr bgcolor="#f0f0f0">
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    o horn - ơ
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    ow
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    o7
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    o+
+                </td>
+            </tr>
+            <tr bgcolor="#f0f0f0">
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    u horn - ư
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    uw
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    u7
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    u+
+                </td>
+            </tr>
+            <tr bgcolor="#f0f0f0">
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    d stroke - đ
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    dd
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    d9
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    dd
+                </td>
+            </tr>
+            <tr bgcolor="#e0e0e0">
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    acute - sắc
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    s
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    1
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    '
+                </td>
+            </tr>
+            <tr bgcolor="#e0e0e0">
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    grave - huyền
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    f
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    2
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    `
+                </td>
+            </tr>
+            <tr bgcolor="#e0e0e0">
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    dot below - nặng
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    j
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    5
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    .
+                </td>
+            </tr>
+            <tr bgcolor="#e0e0e0">
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    hook above - hỏi
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    r
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    3
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    ?
+                </td>
+            </tr>
+            <tr bgcolor="#e0e0e0">
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    tilde - ngã
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    x
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    4
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    ~
+                </td>
+            </tr>
+            <tr bgcolor="#e0e0e0">
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    remove diacritics - xóa dấu
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    z
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    0
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    -
+                </td>
+            </tr>
+            <tr bgcolor="#d5d5d5">
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    Example - Ví dụ:
+                    <br />
+                    Vietnamese - Tiếng Việt
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    Vis duj:
+                    <br />
+                    Tieesng Vieejt
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    Vi1 du5:
+                    <br />
+                    Tie61ng Vie65t
+                </td>
+                <td align="center" style="font-family: Verdana, Arial; font-size: 10pt">
+                    Vi' du.:
+                    <br />
+                    Tie^'ng Vie^.t
+                </td>
+            </tr>
+        </table>
+    </center>
+    <p>
+        Các dấu của chữ được gõ ngay sau chữ đó. Dấu chéo ngược (backslash \) được dùng
+        làm nút thoát (escape character) cho những phím (key) nào cần giữ nguyên, không
+        muốn biến thành dấu của từ đi ngay trước. Thí dụ, đang trong cách gõ VNI mà muốn
+        được chữ <b><i>a1</i></b>, ta gõ <b><i>a\1</i></b>—phím <b><i>\</i></b> sẽ cản chữ
+        <i><b>1</b></i> không cho biến thành dấu sắc (<i><b>'</b></i>) của chữ <b><i>a</i></b>
+        như trong chữ <i><b>á</b></i>.</p>
+    <p>
+        VietPad nhập thêm khả năng đặc biệt SmartMark, cho phép người sử dụng bỏ dấu ở cuối
+        từ, ngoài cách bỏ dấu trên.</p>
+    <h4>
+        FONTS TƯƠNG THÍCH VỚI UNICODE</h4>
+    <p>
+        Bộ mã Unicode chỉ được hỗ trợ giới hạn trong Windows 95/98/Me, song những hệ điều
+        hành này vẫn có khả năng hiển thị tất cả mẫu tự Việt tuân theo tiêu chuẩn Unicode
+        sau khi chọn các font thích hợp. Unicode được hỗ trợ đầy đủ bởi Windows NT/2000/XP.
+        Linux và Mac OS 8.5 hay mới hơn cũng đã bắt đầu hỗ trợ Unicode. Mac OS X và Palm
+        OS yểm trợ đầy đủ tiêu chuẩn Unicode.</p>
+    <p>
+        Những Windows fonts sau đây, được cung cấp với các hệ điều hành Windows 98SE/Me/2000/XP,
+        chứa nhiều từ Unicode, trong có cả chữ Việt:</p>
+    <blockquote>
+        <p>
+            <code>Times New Roman, Courier New, Arial, Tahoma, Verdana, Palatino Linotype</code></p>
+    </blockquote>
+    <p>
+        <font color="#FF0000"><b>Lưu ý</b></font>: Người sử dụng Windows 95/98/NT và Mac
+        OS X nên hạ tải các versions mới nhất của những font này, bởi những versions cũ
+        hơn, vì không tương thích hoàn toàn với tiêu chuẩn Unicode, sẽ hiển thị dấu hỏi
+        (?) hoặc ô vuông (&#9723;) hoặc dùng các fonts khác loại cho các mẫu tự không được
+        hỗ trợ. Chúng có thể được hạ tải từ <a href="http://sourceforge.net/projects/corefonts/">
+            TrueType Core Fonts</a>. Các service packs từ SP4 trở lên của Windows NT, Internet
+        Explorer 5.5, và Microsoft Office 2000 cũng đã có kèm những font này.</p>
+    <p>
+        Nhiều font Unicode khác có thể tìm thấy tại <a href="http://sourceforge.net/projects/vietunicode/">
+            VietUniFont</a>, <a href="http://www.free-fonts.com/uvn">Uvn Free Font</a>, và <a href="http://fontchu.com/">Font Chữ</a>.</p>
+    <p>
+        <u><b>Lưu ý tới người dùng Linux</b></u>: Để fonts Unicode hiện hữu trong Java applications,
+        bạn có thể cần chỉnh environment variable <code>JAVA_FONTS</code> tới đúng các đường
+        dẫn font paths (điển hình là <code>/usr/share/fonts/truetype</code>) rồi export nó.
+        Thường thì việc này thực thi trong file <code>/etc/profile</code>. Để biết thêm chi
+        tiết, đọc trang <a href="http://vietunicode.sourceforge.net/howto/fontlinux.html">Install
+            and configure Unicode TrueType fonts in Linux</a> và <a href="http://vietpad.sourceforge.net/javaonlinux.html">
+                Configure Java environment on Linux</a>.</p>
+    <h4>
+        LIÊN LẠC</h4>
+    <p>
+        Mọi thắc mắc/góp ý/phản ảnh/báo bug, xin yết thị tại <a href="http://vietunicode.sourceforge.net/forum/">
+            Diễn Đàn Việt Unicode</a>.</p>
+    <hr />
+</body>
+</html>

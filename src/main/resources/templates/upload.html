@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload ICS và PDF</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .error { color: red; font-weight: bold; }
+        .success { color: green; font-weight: bold; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .delete-btn { color: red; cursor: pointer; background: none; border: none; }
+        .delete-btn:hover { text-decoration: underline; }
+        .action-btn { margin: 10px 0; padding: 8px 16px; background-color: #dc3545; color: white; border: none; cursor: pointer; }
+        .action-btn:hover { background-color: #c82333; }
+        a { color: #007bff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .logout-btn { margin: 10px 0; padding: 8px 16px; background-color: #007bff; color: white; border: none; cursor: pointer; }
+        .logout-btn:hover { background-color: #0056b3; }
+        .upload-section { margin-bottom: 20px; }
+        .upload-section label { display: inline-block; margin-right: 10px; }
+        .upload-section input[type="file"] { margin-right: 10px; }
+        .upload-section button { padding: 8px 16px; background-color: #28a745; color: white; border: none; cursor: pointer; }
+        .upload-section button:hover { background-color: #218838; }
+    </style>
+    <script>
+        function confirmDelete(filePath) {
+            return confirm('Bạn có chắc muốn xóa file ' + filePath + '?');
+        }
+
+        function toggleSelectAll() {
+            const selectAllCheckbox = document.getElementById('selectAll');
+            const checkboxes = document.querySelectorAll('input[name="selectedFiles"]');
+            checkboxes.forEach(checkbox => checkbox.checked = selectAllCheckbox.checked);
+        }
+
+        function confirmBulkDelete() {
+            const selectedFiles = document.querySelectorAll('input[name="selectedFiles"]:checked');
+            if (selectedFiles.length === 0) {
+                alert('Vui lòng chọn ít nhất một file để xóa.');
+                return false;
+            }
+            return confirm('Bạn có chắc muốn xóa ' + selectedFiles.length + ' file đã chọn?');
+        }
+
+        function confirmBulkImport() {
+            const selectedFiles = document.querySelectorAll('input[name="selectedFiles"]:checked');
+            let icsCount = 0;
+            selectedFiles.forEach(file => {
+                if (file.value.endsWith('.ics')) {
+                    icsCount++;
+                }
+            });
+            if (icsCount === 0) {
+                alert('Vui lòng chọn ít nhất một file ICS để thêm vào Google Calendar.');
+                return false;
+            }
+            return confirm('Bạn có chắc muốn thêm các sự kiện từ ' + icsCount + ' file ICS đã chọn vào Google Calendar?');
+        }
+
+        function confirmLogout() {
+            return confirm('Bạn có chắc muốn đăng xuất?');
+        }
+
+        function validateIcsUpload() {
+            const icsFile = document.getElementById('icsFile');
+            if (!icsFile.files || icsFile.files.length === 0) {
+                alert('Vui lòng chọn một file ICS để import.');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+<h1>Trang Upload File</h1>
+
+<!-- Nút đăng xuất -->
+<form th:action="@{/logout}" method="post" onsubmit="return confirmLogout()">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+    <button type="submit" class="logout-btn">Đăng xuất</button>
+</form>
+<hr/>
+
+<!-- Form upload file ICS -->
+<div class="upload-section">
+    <h2>Import File ICS vào Google Calendar</h2>
+    <form method="post" th:action="@{/calendar/import-ics}" enctype="multipart/form-data" onsubmit="return validateIcsUpload()">
+        <label for="icsFile">Chọn file ICS:</label>
+        <input type="file" name="file" id="icsFile" accept=".ics" required>
+        <button type="submit">Import vào Google Calendar</button>
+    </form>
+    <!-- Hiển thị thông báo import ICS -->
+    <div th:if="${icsError}" class="error">
+        <p th:text="${icsError}"></p>
+    </div>
+    <div th:if="${icsMessage}" class="success">
+        <p th:text="${icsMessage}"></p>
+    </div>
+</div>
+<hr/>
+
+<!-- Form upload file PDF -->
+<div class="upload-section">
+    <h2>Upload File PDF</h2>
+    <form method="post" th:action="@{/api/schedule/generate}" enctype="multipart/form-data">
+        <label for="files">Chọn file PDF:</label>
+        <input type="file" name="files" id="files" accept=".pdf" multiple required>
+        <button type="submit">Tải lên</button>
+    </form>
+</div>
+<hr/>
+
+<!-- Hiển thị thông báo lỗi chung -->
+<div th:if="${error}" class="error">
+    <p th:text="${error}"></p>
+</div>
+
+<!-- Hiển thị thông báo thành công chung -->
+<div th:if="${message}" class="success">
+    <p th:text="${message}"></p>
+</div>
+
+<!-- Debug dữ liệu -->
+<div>
+    <p>Debug: Số lượng file: <span th:text="${uploadedIcsFiles != null ? uploadedIcsFiles.size() : 'null'}"></span></p>
+</div>
+<!-- Danh sách các file đã tải lên -->
+<h2>Danh sách file đã tạo</h2>
+<form th:action="@{/api/schedule/upload/delete/selected}" method="post" onsubmit="return confirmBulkDelete()">
+    <table th:if="${uploadedIcsFiles != null and !uploadedIcsFiles.isEmpty()}" border="1">
+        <thead>
+        <tr>
+            <th><input type="checkbox" id="selectAll" onclick="toggleSelectAll()"></th>
+            <th>Tên file</th>
+            <th>Loại</th>
+            <th>Thời gian tạo</th>
+            <th>Tải Xuống</th>
+            <th>Thêm file vào google calendar</th>
+            <th>Xóa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="file : ${uploadedIcsFiles}">
+            <td><input type="checkbox" name="selectedFiles" th:value="${file.filePath}"></td>
+            <td th:text="${file.filePath}"></td>
+            <td th:text="${file.fileType}"></td>
+            <td th:text="${#dates.format(file.createdAt, 'dd-MM-yyyy HH:mm')}"></td>
+            <td>
+                <a th:if="${file.fileType == 'ICS'}" th:href="@{/api/schedule/upload/download/ics/{fileName}(fileName=${file.filePath})}">Tải xuống</a>
+                <a th:if="${file.fileType == 'PDF'}" th:href="@{/api/schedule/upload/download/pdf/{fileName}(fileName=${file.filePath})}">Tải xuống</a>
+            </td>
+            <td>
+                <a th:if="${file.fileType == 'ICS'}" th:href="@{/calendar/import-ics-file(fileName=${file.filePath})}" class="action-btn">Thêm vào Google Calendar</a>
+            </td>
+            <td>
+                <form th:if="${file.fileType == 'ICS'}" th:action="@{/api/schedule/upload/delete/ics/{fileName}(fileName=${file.filePath})}" method="post">
+                    <input type="submit" value="Xóa" class="delete-btn" th:attr="data-file-path=${file.filePath}" onclick="return confirmDelete(this.getAttribute('data-file-path'))" />
+                </form>
+                <form th:if="${file.fileType == 'PDF'}" th:action="@{/api/schedule/upload/delete/pdf/{fileName}(fileName=${file.filePath})}" method="post">
+                    <input type="submit" value="Xóa" class="delete-btn" th:attr="data-file-path=${file.filePath}" onclick="return confirmDelete(this.getAttribute('data-file-path'))" />
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p th:if="${uploadedIcsFiles == null or uploadedIcsFiles.isEmpty()}">Chưa có file nào.</p>
+    <div th:if="${uploadedIcsFiles != null and !uploadedIcsFiles.isEmpty()}">
+        <button type="submit" class="action-btn">Xóa các file đã chọn</button>
+    </div>
+</form>
+
+<!-- Liên kết tải tất cả file ICS dưới dạng ZIP -->
+<div th:if="${uploadedIcsFiles != null and !uploadedIcsFiles.?[fileType == 'ICS'].isEmpty()}">
+    <a th:href="@{/api/schedule/upload/download/ics/all}">Tải xuống tất cả file ICS dưới dạng ZIP</a>
+</div>
+
+</body>
+</html>
